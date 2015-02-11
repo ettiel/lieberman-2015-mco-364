@@ -1,4 +1,4 @@
-package lieberman.smile;
+//package lieberman.smile;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
