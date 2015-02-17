@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 public class Smile extends JFrame {
 
 	public Smile() {
-		setSize(800, 600);
+		setSize(800, 800);
 		setTitle("SMILE :)");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

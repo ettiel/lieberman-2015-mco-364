@@ -16,20 +16,26 @@ public class SmileComponent extends JComponent {
 		super.paintComponent(g);
 
 		g.setColor(Color.YELLOW);
-		g.fillOval(200, 100, 320, 400); // face
+		g.fillOval(this.getX() + 150, this.getY() + 150, this.getWidth() / 2,
+				this.getHeight() / 2); // face
 
 		g.setColor(Color.RED);
-		g.drawArc(250, 300, 200, 150, 0, -180); // smile
+		g.drawArc(this.getX() + 250, this.getY() + 250, this.getWidth() / 4,
+				this.getHeight() / 4, 0, -180); // smile
 
 		g.setColor(Color.GREEN);
-		g.fillOval(250, 200, 50, 50); // right eye
-		g.fillOval(375, 200, 50, 50); // left eye
+		g.fillOval(this.getX() + 250, this.getY() + 200, this.getWidth() / 10,
+				this.getHeight() / 10); // right eye
+		g.fillOval(this.getX() + 355, this.getY() + 200, this.getWidth() / 10,
+				this.getHeight() / 10); // left eye
 
 		if (wink) {
 			g.setColor(Color.YELLOW);
-			g.fillOval(375, 200, 50, 50);
+			g.fillOval(this.getX() + 355, this.getY() + 200,
+					this.getWidth() / 10, this.getHeight() / 10);
 			g.setColor(Color.BLACK);
-			g.drawArc(375, 200, 50, 50, 0, -180);
+			g.drawArc(this.getX() + 355, this.getY() + 200,
+					this.getWidth() / 10, this.getHeight() / 10, 0, -180);
 			wink = false;
 
 		} else {
