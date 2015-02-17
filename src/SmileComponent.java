@@ -15,27 +15,30 @@ public class SmileComponent extends JComponent {
 
 		super.paintComponent(g);
 
+		int width = getWidth();
+		int height = getHeight();
+		int left = width / 4;
+		int top = 100;
+
 		g.setColor(Color.YELLOW);
-		g.fillOval(this.getX() + 150, this.getY() + 150, this.getWidth() / 2,
-				this.getHeight() / 2); // face
+		g.fillOval(left, top, width / 2, height - height / 4); // face
 
 		g.setColor(Color.RED);
-		g.drawArc(this.getX() + 250, this.getY() + 250, this.getWidth() / 4,
-				this.getHeight() / 4, 0, -180); // smile
+		g.drawArc(left + width / 16, height - height / 2, width / 3, 150, 0,
+				-180); // smile
 
 		g.setColor(Color.GREEN);
-		g.fillOval(this.getX() + 250, this.getY() + 200, this.getWidth() / 10,
-				this.getHeight() / 10); // right eye
-		g.fillOval(this.getX() + 355, this.getY() + 200, this.getWidth() / 10,
-				this.getHeight() / 10); // left eye
+		g.fillOval(left + width / 16, top + height / 6, width / 8, width / 8); // right
+																				// eye
+		g.fillOval(left + width / 4, top + height / 6, width / 8, width / 8); // left
+																				// eye
 
 		if (wink) {
 			g.setColor(Color.YELLOW);
-			g.fillOval(this.getX() + 355, this.getY() + 200,
-					this.getWidth() / 10, this.getHeight() / 10);
+			g.fillOval(left + width / 4, top + height / 6, width / 8, width / 8);
 			g.setColor(Color.BLACK);
-			g.drawArc(this.getX() + 355, this.getY() + 200,
-					this.getWidth() / 10, this.getHeight() / 10, 0, -180);
+			g.drawArc(left + width / 4, top + height / 6, width / 8, width / 8,
+					0, -180);
 			wink = false;
 
 		} else {
