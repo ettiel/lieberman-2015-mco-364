@@ -35,11 +35,38 @@ public class SnakeFrame extends JFrame implements KeyListener{
 	}
 
 	@Override
-	public void keyPressed(KeyEvent arg0) {
+	public void keyPressed(KeyEvent e) {
 		
 		//4 or LEFT - turn left
 		//6 or RIGHT - turn right
+		//2 or DOWN
+		//8 or UP
+		
 		System.out.println("keyPressed");
+		
+		switch (e.getKeyCode()) {
+		case KeyEvent.VK_RIGHT:
+			if (GameLoopThread.direction != 2)
+				GameLoopThread.direction = 1;
+			break;
+		case KeyEvent.VK_UP:
+			if (GameLoopThread.direction != 4)
+				GameLoopThread.direction = 3;
+			break;
+
+		case KeyEvent.VK_LEFT:
+			if (GameLoopThread.direction != 1)
+				GameLoopThread.direction = 2;
+			break;
+
+		case KeyEvent.VK_DOWN:
+			if (GameLoopThread.direction != 3)
+				GameLoopThread.direction = 4;
+			break;
+
+		default:
+			break;
+		}
 		
 	}
 
