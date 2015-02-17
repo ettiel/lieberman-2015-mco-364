@@ -11,11 +11,14 @@ public class Smile extends JFrame {
 		setSize(800, 600);
 		setTitle("SMILE :)");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
 
 		contentPane.add(new SmileComponent());
+		
+		
 
 	}
 
@@ -23,6 +26,7 @@ public class Smile extends JFrame {
 
 		final Smile smile = new Smile();
 		smile.setVisible(true);
+		
 
 		Thread t = new Thread() {
 			public void run() {

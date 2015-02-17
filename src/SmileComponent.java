@@ -7,11 +7,15 @@ import javax.swing.JComponent;
 
 public class SmileComponent extends JComponent {
 
+	 boolean wink = true;
 	// never call paintComponent!! (the JVM does)
 	@Override
 	protected void paintComponent(Graphics g) {
-		 //boolean wink = false;
-		super.paintComponent(g);
+		
+		
+		
+		 super.paintComponent(g);
+		 
 
 		g.setColor(Color.YELLOW);
 		g.fillOval(200, 100, 320, 400); // face
@@ -21,16 +25,18 @@ public class SmileComponent extends JComponent {
 
 		g.setColor(Color.GREEN);
 		g.fillOval(250, 200, 50, 50); // right eye
-
-		 //if (wink){
-		 //g.setColor(Color.BLACK);
-		 //g.drawArc - eyelid
-		 //}
-		 //else {
-
 		g.fillOval(375, 200, 50, 50); // left eye
 		
-		 //wink = true; }
+		if (wink){
+		 g.setColor(Color.YELLOW);
+		g.fillOval(375, 200, 50, 50);
+		g.setColor(Color.BLACK);
+		g.drawArc(375, 200, 50, 50, 0, -180);
+		wink = false;
+		 //g.drawArc - eyelid
+		 }
+		 else {
+		 wink = true; }
 
 	}
 
