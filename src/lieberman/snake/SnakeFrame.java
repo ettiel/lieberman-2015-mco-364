@@ -21,7 +21,7 @@ public class SnakeFrame extends JFrame implements KeyListener{
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
 		
-		SnakeComponent comp = new SnakeComponent();
+		WorldComponent comp = new WorldComponent();
 		comp.addKeyListener(this);
 		comp.setFocusable(true);
 		contentPane.add(comp);
@@ -43,7 +43,7 @@ public class SnakeFrame extends JFrame implements KeyListener{
 		//8 or UP
 		
 		System.out.println("keyPressed");
-		
+		/*
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_RIGHT:
 			if (GameLoopThread.direction != 2)
@@ -67,7 +67,7 @@ public class SnakeFrame extends JFrame implements KeyListener{
 		default:
 			break;
 		}
-		
+		*/
 	}
 
 	@Override
