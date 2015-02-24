@@ -4,13 +4,13 @@ public class SnakeMain {
 	
 	public static void main(String args[]) {
 	
-		final SnakeFrame snake = new SnakeFrame();
-		snake.setVisible(true);
+		final SnakeFrame snakeFrame = new SnakeFrame();
+		snakeFrame.setVisible(true);
 		
 		Thread t = new Thread() {
 			public void run() {
 				while (true) {
-					snake.repaint();
+					snakeFrame.repaint();
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
