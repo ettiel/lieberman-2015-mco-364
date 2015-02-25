@@ -20,8 +20,10 @@ public class SnakeFrame extends JFrame implements KeyListener {
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
 
+
 		world = new World();
 		comp = new WorldComponent(world);
+
 		comp.addKeyListener(this);
 		comp.setFocusable(true);
 		contentPane.add(comp);
@@ -32,46 +34,15 @@ public class SnakeFrame extends JFrame implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// 4 or LEFT - turn left
-		// 6 or RIGHT - turn right
-		// 2 or DOWN
-		// 8 or UP
 
-		switch (e.getKeyCode()) {
-		case KeyEvent.VK_UP:
-			if (world.getSnake().getDirection() != Direction.DOWN)
-			world.getSnake().setDirection(Direction.UP);
-			break;
-		case KeyEvent.VK_8:
-			if (world.getSnake().getDirection() != Direction.DOWN)
-			world.getSnake().setDirection(Direction.UP);
-			break;
-		case KeyEvent.VK_DOWN:
-			if (world.getSnake().getDirection() != Direction.UP)
-			world.getSnake().setDirection(Direction.DOWN);
-			break;
-		case KeyEvent.VK_2:
-			if (world.getSnake().getDirection() != Direction.UP)
-			world.getSnake().setDirection(Direction.DOWN);
-			break;
-		case KeyEvent.VK_RIGHT:
-			if (world.getSnake().getDirection() != Direction.LEFT)
-			world.getSnake().setDirection(Direction.RIGHT);
-			break;
-		case KeyEvent.VK_6:
-			if (world.getSnake().getDirection() != Direction.LEFT)
-			world.getSnake().setDirection(Direction.RIGHT);
-			break;
-		case KeyEvent.VK_LEFT:
-			if (world.getSnake().getDirection() != Direction.RIGHT)
-			world.getSnake().setDirection(Direction.LEFT);
-			break;
-		case KeyEvent.VK_4:
-			if (world.getSnake().getDirection() != Direction.RIGHT)
-			world.getSnake().setDirection(Direction.LEFT);
-			break;
-
-		}
+		
+		//4 or LEFT - turn left
+		//6 or RIGHT - turn right
+		//2 or DOWN
+		//8 or UP
+		
+		System.out.println("keyPressed");
+	
 
 	}
 

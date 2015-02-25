@@ -69,6 +69,6 @@ public class Snake {
 	public LinkedList<Point> getPoints() {
 		return points;
 	}
-	
+
 
 }

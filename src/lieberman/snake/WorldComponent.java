@@ -26,8 +26,6 @@ public class WorldComponent extends JComponent{
 		super.paintComponent(g);
 		draw(g);
 		
-	
-		
 		//either pass graphics object and inside world do g.___
 			//world.draw(g);
 		
@@ -40,7 +38,8 @@ public class WorldComponent extends JComponent{
 		g.clearRect(0, 0, boxW*gridW, boxH*gridH);
 		drawGrid(g);
 		drawSnake(g);
-		//drawFood(g);
+		//placeFood();
+		drawFood(g);
 	}
 	
 	public void drawGrid(Graphics g){
@@ -72,7 +71,7 @@ public class WorldComponent extends JComponent{
 		return world;
 	}
 	
-	public void placeFood(){ //when food is eaten, regenerate and draw new
+	public void placeFood(){
 		Random rand = new Random();
 		int randomX = rand.nextInt(gridW);
 		int randomY = rand.nextInt(gridH);
