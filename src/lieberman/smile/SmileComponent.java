@@ -1,4 +1,4 @@
-//package lieberman.smile;
+package lieberman.smile;
 
 import java.awt.Color;
 import java.awt.Graphics;

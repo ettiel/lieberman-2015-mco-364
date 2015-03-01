@@ -1,33 +1,32 @@
 package lieberman.pong;
 
 import java.awt.BorderLayout;
-
+import java.awt.Canvas;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-public class GameMain extends JPanel implements Runnable {
+public class GameMain extends Canvas implements Runnable {
 
-	private static final long serialVersionUID = 1L;
-	
 	JFrame frame;
 	public final int WIDTH = 400;
-	public final int HEIGHT = 700;
+	public final int HEIGHT = WIDTH / 9 * 16;
 	public final Dimension gameSize = new Dimension(WIDTH, HEIGHT);
 
-
+	boolean gameRunning = false;
 
 	@Override
 	public void run() {
-		
+		while (gameRunning) {
+			
+		}
 	}
 
 	public GameMain() {
 		frame = new JFrame();
-		
+		setMinimumSize(gameSize);
 		setPreferredSize(gameSize);
-		
+		setMaximumSize(gameSize);
 
 		frame.add(this, BorderLayout.CENTER);
 		frame.pack();
@@ -40,7 +39,8 @@ public class GameMain extends JPanel implements Runnable {
 	}
 
 	public static void main(String[] args) {
-		new GameMain();
+		GameMain game = new GameMain();
 	}
 
 }
+
