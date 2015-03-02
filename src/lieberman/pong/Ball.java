@@ -60,7 +60,7 @@ public class Ball {
 		}
 	}
 
-	public void render(Graphics g) {
+	public void draw(Graphics g) {
 		g.setColor(Color.YELLOW);
 		g.fillOval(x, y, size, size);
 	}

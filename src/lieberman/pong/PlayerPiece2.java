@@ -32,7 +32,7 @@ public class PlayerPiece2 {
 		}
 	}
 
-	public void render(Graphics g) {
+	public void draw(Graphics g) {
 		g.setColor(Color.MAGENTA);
 		g.fillRect(x, y, width, height);
 	}
