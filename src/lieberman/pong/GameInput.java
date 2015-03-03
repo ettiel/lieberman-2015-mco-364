@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 
 public class GameInput implements KeyListener{
 	
-	int key;
+
 	
 	public GameInput(GameMain game){
 		game.addKeyListener(this);
@@ -14,7 +14,7 @@ public class GameInput implements KeyListener{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		key = e.getKeyCode();
+	int	key = e.getKeyCode();
 		
 		if (key==e.VK_W){
 			GameMain.player1.down = false;
