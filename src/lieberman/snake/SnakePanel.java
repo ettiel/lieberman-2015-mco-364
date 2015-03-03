@@ -1,4 +1,4 @@
-package lieberman.snakeNew;
+package lieberman.snake;
 
 import java.awt.Color;
 import java.awt.Dimension;

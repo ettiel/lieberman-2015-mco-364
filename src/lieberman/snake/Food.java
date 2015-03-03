@@ -1,27 +1,34 @@
 package lieberman.snake;
 
-
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Point;
 
 public class Food {
 
-	private Point food;
-	
+	private int x, y, width, height;
 
-	public Food() {
-		food = new Point(10,10);
+	public Food(int x, int y, int size) {
+		this.x = x;
+		this.y = y;
+		width = size;
+		height = size;
 	}
 
+	public void tick() {
 
-
-	public Point getFoodPoint() {
-		return food;
 	}
 
-	public void setFoodPoint(Point food) {
-		this.food = food;
+	public void draw(Graphics g) {
+		g.setColor(Color.RED);
+		g.fillRect(x * width, y * height, width, height);
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
 	}
 
 }
