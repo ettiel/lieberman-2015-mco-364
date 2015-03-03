@@ -49,6 +49,16 @@ public class GameMain extends Canvas implements Runnable {
 		new Thread(this).start();
 
 	}
+	
+	public void end() {
+		gameRunning = false;
+		try {
+			new Thread(this).join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	public GameMain() {
 		frame = new JFrame();

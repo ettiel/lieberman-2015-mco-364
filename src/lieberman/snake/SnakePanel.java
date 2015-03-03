@@ -18,7 +18,7 @@ public class SnakePanel extends JPanel implements Runnable {
 	private boolean running = false;
 
 	private SnakeBody body;
-	private ArrayList<SnakeBody> snake;
+	private Snake snake;
 
 	private Food food;
 	private ArrayList<Food> foods;
@@ -28,8 +28,9 @@ public class SnakePanel extends JPanel implements Runnable {
 	private int x = 10, y = 10;
 	private int size = 3;
 
-	private boolean right = true, left = false, up = false, down = false;
+	public boolean right = true, left = false, up = false, down = false;
 	private int ticks = 0;
+
 	private Input key;
 
 	public SnakePanel() {
@@ -40,45 +41,45 @@ public class SnakePanel extends JPanel implements Runnable {
 
 		random = new Random();
 
-		snake = new ArrayList<SnakeBody>();
+		snake = new Snake();
 		foods = new ArrayList<Food>();
 		start();
 	}
 
 	public void tick() {
-		if (snake.size() == 0) {
+		if (snake.getSnake().size() == 0) {
 			body = new SnakeBody(x, y, 10);
-			snake.add(body);
+			snake.getSnake().add(body);
 		}
-			if (foods.size() == 0) {
-				int xCoor = random.nextInt(59);
-				int yCoor = random.nextInt(59);
+		if (foods.size() == 0) {
+			int xCoor = random.nextInt(59);
+			int yCoor = random.nextInt(59);
 
-				food = new Food(xCoor, yCoor, 10);
-				foods.add(food);
+			food = new Food(xCoor, yCoor, 10);
+			foods.add(food);
+		}
+
+		for (int i = 0; i < foods.size(); i++) {
+			if (x == foods.get(i).getX() && y == foods.get(i).getY()) {
+				size++;
+				foods.remove(i);
+				i--;
 			}
+		}
 
-			for (int i = 0; i < foods.size(); i++) {
-				if (x == foods.get(i).getX() && y == foods.get(i).getY()) {
-					size++;
-					foods.remove(i);
-					i--;
+		for (int i = 0; i < snake.getSnake().size(); i++) {
+			if (x == snake.getSnake().get(i).getX()
+					&& y == snake.getSnake().get(i).getY()) { // eats itself
+				if (i != snake.getSnake().size() - 1) { // take out head
+					end();
 				}
 			}
+		}
 
-			for (int i=0; i< snake.size(); i++){
-				if(x == snake.get(i).getX() && y ==snake.get(i).getY()){ //eats itself
-					if(i != snake.size()-1){ //take out head
-						end();
-					}
-				}
-			}
-		
-			if (x<0 || x>59 || y<0 || y>59){
-				end();
-			}
+		if (x < 0 || x > 59 || y < 0 || y > 59) {
+			end();
+		}
 
-			
 		ticks++;
 
 		if (ticks > 250000) {
@@ -94,10 +95,10 @@ public class SnakePanel extends JPanel implements Runnable {
 			ticks = 0;
 
 			body = new SnakeBody(x, y, 10);
-			snake.add(body);
+			snake.getSnake().add(body);
 
-			if (snake.size() > size) {
-				snake.remove(0);
+			if (snake.getSnake().size() > size) {
+				snake.getSnake().remove(0);
 			}
 		}
 	}
@@ -105,15 +106,15 @@ public class SnakePanel extends JPanel implements Runnable {
 	public void paint(Graphics g) {
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 		g.setColor(Color.BLUE);
-//		for (int i = 0; i < WIDTH / 10; i++) {
-//			g.drawLine(i * 10, 0, i * 10, HEIGHT);
-//		}
-//		for (int i = 0; i < HEIGHT / 10; i++) {
-//			g.drawLine(0, i * 10, WIDTH, i * 10);
-//		}
+		// for (int i = 0; i < WIDTH / 10; i++) {
+		// g.drawLine(i * 10, 0, i * 10, HEIGHT);
+		// }
+		// for (int i = 0; i < HEIGHT / 10; i++) {
+		// g.drawLine(0, i * 10, WIDTH, i * 10);
+		// }
 
-		for (int i = 0; i < snake.size(); i++) {
-			snake.get(i).draw(g);
+		for (int i = 0; i < snake.getSnake().size(); i++) {
+			snake.getSnake().get(i).draw(g);
 		}
 
 		for (int i = 0; i < foods.size(); i++) {
@@ -128,13 +129,13 @@ public class SnakePanel extends JPanel implements Runnable {
 	}
 
 	public void end() {
-running = false;
-try {
-	thread.join();
-} catch (InterruptedException e) {
-	// TODO Auto-generated catch block
-	e.printStackTrace();
-}
+		running = false;
+		try {
+			thread.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void run() {
@@ -142,6 +143,22 @@ try {
 			tick();
 			repaint();
 		}
+	}
+
+	public boolean isRight() {
+		return right;
+	}
+
+	public boolean isLeft() {
+		return left;
+	}
+
+	public boolean isUp() {
+		return up;
+	}
+
+	public boolean isDown() {
+		return down;
 	}
 
 	public class Input implements KeyListener {

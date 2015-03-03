@@ -32,10 +32,16 @@ public class Ball {
 
 		if (x <= 0) { // left edge
 			game.p2Score++;
+			if(game.p2Score == 10){
+				game.end();
+			}
 			speedX = speed; // moves to right
 
 		} else if (x + size >= game.getWidth()) { // right edge
 			game.p1Score++;
+			if(game.p1Score == 10){
+				game.end();
+			}
 			speedX = -speed; // moves to left
 		}
 
