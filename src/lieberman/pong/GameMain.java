@@ -23,10 +23,22 @@ public class GameMain extends Canvas implements Runnable {
 	BufferedImage image = new BufferedImage(WIDTH, HEIGHT,
 			BufferedImage.TYPE_INT_BGR);
 
-	public static PlayerPiece1 player1;
-	public static PlayerPiece2 player2;
-	public static Ball ball;
+	public  PlayerPiece1 player1;
+	public  PlayerPiece2 player2;
+	public  Ball ball;
 	boolean gameRunning = false;
+
+	public PlayerPiece1 getPlayer1() {
+		return player1;
+	}
+
+	public PlayerPiece2 getPlayer2() {
+		return player2;
+	}
+
+	public Ball getBall() {
+		return ball;
+	}
 
 	int p1Score = 0, p2Score = 0;
 
@@ -51,6 +63,12 @@ public class GameMain extends Canvas implements Runnable {
 	}
 	
 	public void end() {
+		if (ball.getWinner()=="player 1"){
+			drawWinner("PLAYER 1");
+		}
+		if (ball.getWinner()=="player 2"){
+			drawWinner("PLAYER 2");
+		}
 		gameRunning = false;
 		try {
 			new Thread(this).join();
@@ -114,6 +132,26 @@ public class GameMain extends Canvas implements Runnable {
 
 	}
 
+	public void drawWinner(String won) {
+		BufferStrategy bufStr = getBufferStrategy();
+		if (bufStr == null) {
+			createBufferStrategy(1);
+			return;
+		}
+
+		Graphics g = bufStr.getDrawGraphics();
+
+		g.setColor(Color.LIGHT_GRAY);
+		
+		g.drawString("WINNER!!!!!!! " + won, 145, 120);
+		
+
+		g.dispose();
+		bufStr.show();
+
+	}
+	
+	
 	public static void main(String[] args) {
 		GameMain game = new GameMain();
 		game.start();

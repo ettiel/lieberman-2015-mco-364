@@ -8,7 +8,7 @@ public class PlayerPiece2 {
 	int x; 
 	int y; 
 	int width = 15;
-	int height = 45;
+	int height = 60;
 
 	Rectangle box;
 	

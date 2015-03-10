@@ -10,6 +10,7 @@ public class Ball {
 	int speedX;
 	int speedY;
 	int size = 16;
+	String winner;
 
 	Rectangle box;
 
@@ -32,14 +33,22 @@ public class Ball {
 
 		if (x <= 0) { // left edge
 			game.p2Score++;
-			if(game.p2Score == 11){
+			//ball starts from middle
+			setX(200);
+			setY(112);
+			if(game.p2Score == 10){
+				winner = "player 2";
 				game.end();
 			}
 			speedX = speed; // moves to right
 
 		} else if (x + size >= game.getWidth()) { // right edge
 			game.p1Score++;
-			if(game.p1Score == 11){
+			//ball starts from middle
+			setX(200);
+			setY(112);
+			if(game.p1Score == 10){
+				winner = "player 1";
 				game.end();
 			}
 			speedX = -speed; // moves to left
@@ -56,6 +65,18 @@ public class Ball {
 		y += speedY;
 
 		collision(game);
+	}
+
+	public String getWinner() {
+		return winner;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public void setY(int y) {
+		this.y = y;
 	}
 
 	private void collision(GameMain game) {
