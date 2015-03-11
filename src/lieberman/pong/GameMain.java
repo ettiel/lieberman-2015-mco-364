@@ -92,7 +92,7 @@ public class GameMain extends Canvas implements Runnable {
 		frame.setResizable(false);
 		frame.setTitle("PONG");
 		frame.setLocationRelativeTo(null);
-
+		this.requestFocus();
 		GI = new GameInput(this);
 
 		player1 = new PlayerPiece1(10, 60);
