@@ -13,7 +13,7 @@ public class Client {
 		Socket socket = null;
 
 		try {
-			socket = new Socket("localhost", 3771); // ip address, port number
+			socket = new Socket("localhost", 3761); // ip address, port number
 
 			OutputStream out = socket.getOutputStream();
 
@@ -21,9 +21,9 @@ public class Client {
 
 			writer.println("What's up?");
 			
-			writer.println("Even in the future nothing works!");
+			writer.println("Have a great day!");
 			
-			writer.println("Alas, earwax.");
+			writer.println("Goodbye.");
 			
 			writer.flush();
 
