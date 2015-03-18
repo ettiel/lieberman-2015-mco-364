@@ -13,7 +13,7 @@ public class Client {
 		Socket socket = null;
 
 		try {
-			socket = new Socket("localhost", 3761); // ip address, port number
+			socket = new Socket("localhost", 1234); // ip address, port number
 
 			OutputStream out = socket.getOutputStream();
 
@@ -43,4 +43,6 @@ public class Client {
 
 		}
 	}
+
+	
 }

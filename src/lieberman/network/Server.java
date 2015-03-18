@@ -14,7 +14,7 @@ public class Server{
 	public static void main(String args[]) {
 
 		try {
-			ServerSocket serverSocket = new ServerSocket(3761); // listens for
+			ServerSocket serverSocket = new ServerSocket(1234); // listens for
 																// server's
 																// socket
 			ServerThread t = new ServerThread(serverSocket);
