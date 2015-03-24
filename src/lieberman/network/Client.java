@@ -36,11 +36,15 @@ public class Client {
 		}  finally {
 			
 			try {
+				if (socket != null){
 				socket.close();
+				}
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
-
+//			finally{
+//			IOUtils.closeQuietly(socket); //needa import library
+//		}
 		}
 	}
 
