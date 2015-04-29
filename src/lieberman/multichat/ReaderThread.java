@@ -1,4 +1,4 @@
-package lieberman.chat;
+package lieberman.multichat;
 
 import java.io.BufferedReader;
 import java.io.IOException;
