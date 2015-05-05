@@ -28,7 +28,7 @@ public class ReaderThread extends Thread {
 		
 		String line;
 		while ((line = reader.readLine())!=null){
-			System.out.println(line);
+		
 			listener.onLineRead(line);
 		}
 		

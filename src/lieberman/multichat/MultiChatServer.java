@@ -25,10 +25,10 @@ public class MultiChatServer implements ReaderListener {
 
 		try {
 
-			ServerSocket serverSocket = new ServerSocket(1234);
+			ServerSocket serverSocket = new ServerSocket(5003);
 
 			while (true) {
-				Socket socket = serverSocket.accept();
+				socket = serverSocket.accept();
 				sockets.add(socket);
 				ReaderThread thread = new ReaderThread(socket, this);
 				thread.start();
@@ -50,7 +50,7 @@ public class MultiChatServer implements ReaderListener {
 
 	@Override
 	public void onLineRead(String line) {
-		// TODO Auto-generated method stub
+		messages.add(line);
 
 	}
 
