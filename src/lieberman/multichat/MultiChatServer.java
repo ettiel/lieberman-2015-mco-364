@@ -25,11 +25,11 @@ public class MultiChatServer implements ReaderListener {
 
 		try {
 
-			ServerSocket serverSocket = new ServerSocket(5003);
+			ServerSocket serverSocket = new ServerSocket(7003);
 
 			while (true) {
 				socket = serverSocket.accept();
-				sockets.add(socket);
+				sockets.add(socket); //needs to be in synchronized block (only 1 thread can be in there at once)
 				ReaderThread thread = new ReaderThread(socket, this);
 				thread.start();
 			}

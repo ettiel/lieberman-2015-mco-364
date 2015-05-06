@@ -18,17 +18,41 @@ public class WriterThread extends Thread {
 		this.sockets = sockets;
 	}
 
-	public void run() {
+	public void run() { //need to synchronize access to the sockets so they dont mess each other up
 
 		while (true) {
 			String message;
 			try {
 				message = messages.take();
+				//writeToSockets(message);
+				//} catch (InterruptedException e){
+				//e.printStackTrace();
+				//}
+				
+				
+				
+				/*
+				 * private void writeToSockets(String message){
+				 * synchronized(sockets){
+				 * Iterator<Socket> iter = sockets.iterator(); //more efficient to use iterator and linkedList than for loop and arrayList
+				 * while(iter.hasNext()){
+				 * try{
+				 * PrintWriter out = new PrintWriter(s.getOutputStream());
+				 * out.println(message);
+				 * out.flush();
+				 * } catch(IOException e){
+				 * iter.remove();
+				 * e.printStackTrace();
+				 * }
+				 * }
+				 * }
+				 * }
+				 */
 
 				for (Socket socket : sockets) {
 
 
-					try {
+					try { //has to be INSIDE for loop so that one closed socket doesnt stop looping to further sockets on the list
 						OutputStream out = socket.getOutputStream();
 						PrintWriter writer = new PrintWriter(out);
 						writer.println(message);
@@ -39,7 +63,7 @@ public class WriterThread extends Thread {
 					}
 
 				}
-			} catch (InterruptedException e1) {
+			} catch (InterruptedException e1) { 
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}

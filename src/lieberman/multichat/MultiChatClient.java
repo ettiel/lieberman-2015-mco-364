@@ -16,7 +16,7 @@ public class MultiChatClient implements ReaderListener{
 	private PrintWriter writer;
 
 	public MultiChatClient(JTextArea textArea) throws UnknownHostException, IOException {
-		socket = new Socket("localhost", 5003);
+		socket = new Socket("localhost", 7003);
 		out = socket.getOutputStream();
 		this.textArea=textArea;
 		writer = new PrintWriter(out);
