@@ -6,26 +6,35 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-public class Canvas extends JPanel{
-	
-	private BufferedImage image;
+public class Canvas extends JPanel {
 
-	
+	private BufferedImage image;
+	private Color color = Color.black;
+
 	public BufferedImage getImage() {
 		return image;
 	}
 
-	public Canvas(int width, int height){
-		 image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+	public Canvas(int width, int height) {
+		image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		Graphics graphics = image.getGraphics();
 		graphics.setColor(Color.WHITE);
-		graphics.fillRect(0,0,width,height);
+		graphics.fillRect(0, 0, width, height);
 	}
-	
+
 	@Override
-	protected void paintComponent(Graphics g){
+	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(image, 0, 0, null);
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
+
+	}
+
+	public Color getColor() {
+		return color;
 	}
 
 }

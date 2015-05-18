@@ -40,7 +40,7 @@ public class DrawListener implements MouseListener, MouseMotionListener {
 		int y = event.getY();
 
 		Graphics graphics = canvas.getImage().getGraphics();
-		graphics.setColor(Color.BLACK);
+		graphics.setColor(canvas.getColor());
 		graphics.drawLine(x, y, x, y);
 		
 		lastX = x;
@@ -63,7 +63,7 @@ public class DrawListener implements MouseListener, MouseMotionListener {
 		int y = event.getY();
 
 		Graphics graphics = canvas.getImage().getGraphics();
-		graphics.setColor(Color.BLACK);
+		graphics.setColor(canvas.getColor());
 		graphics.drawLine(lastX, lastY, x, y);
 		
 		lastX = x;
