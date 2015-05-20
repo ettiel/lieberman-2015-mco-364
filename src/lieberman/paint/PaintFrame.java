@@ -15,8 +15,8 @@ public class PaintFrame extends JFrame {
 	private RectangleListener rectListener;
 	private JColorChooser colorChooser;
 	private JButton colorButton;
-	private JButton drawButton;
-	private JButton rectButton;
+	private ModeButton drawButton;
+	private ModeButton rectButton;
 
 	public PaintFrame() {
 		setTitle("Paint");
@@ -27,18 +27,39 @@ public class PaintFrame extends JFrame {
 		final Canvas canvas = new Canvas(600, 600);
 		add(canvas, BorderLayout.CENTER);
 		final DrawListener listener = new DrawListener(canvas);
-		final RectangleListener rectListener = new RectangleListener(canvas);
+		//final BrushListener rectListener = new RectangleListener(canvas);
+		
+		canvas.addMouseListener(listener);
+		canvas.addMouseMotionListener(listener);
+		
+	
+		
+		ActionListener actionListener = new ActionListener(){
 
-		drawButton = new JButton("free draw");
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				ModeButton button = (ModeButton) event.getSource();
+				BrushListener listener = new BrushListener();
+				
+			}
+			
+		}
+		
+		drawButton = new ModeButton(new RectangleListener(canvas));
+		drawButton.addActionListener(actionListener);
+		
+		
+
+	
 		drawButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
+				DrawListener listener = new DrawListener(canvas);
+				canvas.setBrushListener(listener);
 				canvas.addMouseListener(listener);
 				canvas.addMouseMotionListener(listener);
-				canvas.removeMouseListener(rectListener);
-				canvas.removeMouseMotionListener(rectListener);
 				// TODO Auto-generated method stub
 
 			}
