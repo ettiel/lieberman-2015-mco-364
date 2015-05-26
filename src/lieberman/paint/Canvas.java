@@ -27,7 +27,7 @@ public class Canvas extends JPanel {
 		super.paintComponent(g);
 		g.drawImage(image, 0, 0, null);
 		
-		listener.draw(g);
+		//listener.draw(g);
 	}
 
 	public void setColor(Color color) {

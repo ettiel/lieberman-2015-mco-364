@@ -11,8 +11,8 @@ import javax.swing.JFrame;
 
 public class PaintFrame extends JFrame {
 
-	private DrawListener drawListener;
-	private RectangleListener rectListener;
+	private BrushListener drawListener;
+	private BrushListener rectListener;
 	private JColorChooser colorChooser;
 	private JButton colorButton;
 	private ModeButton drawButton;
@@ -26,11 +26,12 @@ public class PaintFrame extends JFrame {
 
 		final Canvas canvas = new Canvas(600, 600);
 		add(canvas, BorderLayout.CENTER);
-		final DrawListener listener = new DrawListener(canvas);
-		//final BrushListener rectListener = new RectangleListener(canvas);
+		drawListener = new DrawListener(canvas);
+		rectListener = new RectangleListener(canvas);
 		
-		canvas.addMouseListener(listener);
-		canvas.addMouseMotionListener(listener);
+		
+		//canvas.addMouseListener(rectListener);
+		//canvas.addMouseMotionListener(rectListener);
 		
 	
 		
@@ -39,47 +40,21 @@ public class PaintFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				ModeButton button = (ModeButton) event.getSource();
-				BrushListener listener = new BrushListener();
+				BrushListener listener = button.getListener();
+				canvas.addMouseListener(listener);
+				canvas.addMouseMotionListener(listener);
 				
 			}
 			
-		}
+		};
 		
-		drawButton = new ModeButton(new RectangleListener(canvas));
+		rectButton = new ModeButton(rectListener);
+		rectButton.addActionListener(actionListener);
+		drawButton = new ModeButton(drawListener);
 		drawButton.addActionListener(actionListener);
-		
 		
 
 	
-		drawButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-
-				DrawListener listener = new DrawListener(canvas);
-				canvas.setBrushListener(listener);
-				canvas.addMouseListener(listener);
-				canvas.addMouseMotionListener(listener);
-				// TODO Auto-generated method stub
-
-			}
-
-		});
-		rectButton = new JButton("rectangle");
-		rectButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
-				canvas.addMouseListener(rectListener);
-				canvas.addMouseMotionListener(rectListener);
-				canvas.removeMouseListener(listener);
-				canvas.removeMouseMotionListener(listener);
-
-			}
-
-		});
 
 		colorButton = new JButton("color");
 		colorButton.addActionListener(new ActionListener() {

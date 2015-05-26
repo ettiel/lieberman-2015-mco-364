@@ -1,19 +1,22 @@
 package lieberman.paint;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 public abstract class BrushListener implements MouseListener, MouseMotionListener{
 	
-	private Canvas canvas;
+	protected Canvas canvas;
 	
 	protected int startX;
 	protected int startY;
 	protected int lastX;
 	protected int lastY;
-
+	protected int width;
+	protected int height;
+	
 	public  BrushListener(Canvas canvas) {
 		this.canvas = canvas;
 	}
@@ -65,6 +68,10 @@ public abstract class BrushListener implements MouseListener, MouseMotionListene
 	}
 	
 	abstract public void draw(Graphics g);
+
+	abstract public void drawPreview(Graphics2D g) ;
+		
+	
 		
 	
 
